@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+extension Error {
+    private var nsError: NSError {
+        self as NSError
+    }
+    var code: Int {
+        nsError.code
+    }
+    var isURLRequestCancelled: Bool {
+        code == NSURLErrorCancelled
+    }
+}

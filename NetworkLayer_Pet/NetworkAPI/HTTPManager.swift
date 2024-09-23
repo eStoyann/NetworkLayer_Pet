@@ -50,11 +50,7 @@ class HTTPManager: HTTPService {
                     }
                 case let .failure(error):
                     queue.async {
-                        finished(.failure(error))
-                    }
-                case .cancelled:
-                    queue.async {
-                        finished(.cancelled)
+                        finished(error.isURLRequestCancelled  ? .cancelled : .failure(error))
                     }
                 }
             }

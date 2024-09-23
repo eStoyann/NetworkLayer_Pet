@@ -10,7 +10,7 @@ import Foundation
 
 enum HTTPMethod {
     case get
-    case post([String: Any]? = nil)
+    case post(parameters: [String: Any]? = nil)
     case delete
     case put
     case patch

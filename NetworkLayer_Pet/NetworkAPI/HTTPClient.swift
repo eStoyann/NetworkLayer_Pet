@@ -9,7 +9,7 @@
 import Foundation
 
 protocol HTTPClient {
-    typealias CompletionHandler = (HTTPResult<(Data, HTTPURLResponse), Error>) -> Void
+    typealias CompletionHandler = (Result<(Data, HTTPURLResponse), Error>) -> Void
     func fetch(request: URLRequest,
                _ finished: @escaping CompletionHandler) -> HTTPURLSessionTask
 }
@@ -20,11 +20,7 @@ extension URLSession: HTTPClient {
                _ finished: @escaping CompletionHandler) -> HTTPURLSessionTask {
         dataTask(with: request) { data, response, error in
             guard error == nil else {
-                if (error! as NSError).code == NSURLErrorCancelled {
-                    finished(.cancelled)
-                } else {
-                    finished(.failure(error!))
-                }
+                finished(.failure(error!))
                 return
             }
             guard let data, !data.isEmpty else {
@@ -39,3 +35,4 @@ extension URLSession: HTTPClient {
         }
     }
 }
+
