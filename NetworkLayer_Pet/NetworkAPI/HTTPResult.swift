@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum HTTPResult<Success, Failure> where Failure: Error {
+enum HTTPResult<Success> {
     case success(Success)
-    case failure(Failure)
+    case failure(Error)
     case cancelled
 }

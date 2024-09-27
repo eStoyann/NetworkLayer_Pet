@@ -12,7 +12,7 @@ protocol HTTPService {
     func fetch<Response>(endpoint: HTTPEndpoint,
                          type: Response.Type,
                          receiveOn queue: DispatchQueue,
-                         _ finished: @escaping (HTTPResult<Response, Error>) -> Void) where Response: Codable
+                         _ finished: @escaping (HTTPResult<Response>) -> Void) where Response: Codable
 }
 class HTTPManager: HTTPService {
     enum Errors: Error {
@@ -30,7 +30,7 @@ class HTTPManager: HTTPService {
     func fetch<Response>(endpoint: HTTPEndpoint,
                          type: Response.Type,
                          receiveOn queue: DispatchQueue,
-                         _ finished: @escaping (HTTPResult<Response, Error>) -> Void) where Response : Decodable, Response : Encodable {
+                         _ finished: @escaping (HTTPResult<Response>) -> Void) where Response : Decodable, Response : Encodable {
         do {
             let request = try endpoint.request()
             let task = client.fetch(request: request) {[weak self] result in
