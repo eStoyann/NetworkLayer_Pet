@@ -10,7 +10,8 @@ import Foundation
 
 enum HTTPRouter {
     case posts
-    var endpoint: HTTPEndpointable {
+    
+    var endpoint: HTTPEndpoint {
         switch self {
         case .posts:
             let path = "/posts"

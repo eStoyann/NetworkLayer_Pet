@@ -10,7 +10,7 @@ import Foundation
 
 enum HTTPMethod {
     case get
-    case post(parameters: [String: Any]? = nil)
+    case post(HTTPBody)
     case delete
     case put
     case patch
@@ -29,9 +29,9 @@ enum HTTPMethod {
             return "PUT"
         }
     }
-    var parameters: [String: Any]? {
-        if case let .post(parameters) = self {
-            return parameters
+    var httpBody: HTTPBody? {
+        if case let .post(data) = self {
+            return data
         }
         return nil
     }

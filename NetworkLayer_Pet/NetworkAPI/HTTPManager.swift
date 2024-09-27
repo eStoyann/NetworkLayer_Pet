@@ -9,7 +9,7 @@
 import Foundation
 
 protocol HTTPService {
-    func fetch<Response>(endpoint: HTTPEndpointable,
+    func fetch<Response>(endpoint: HTTPEndpoint,
                          type: Response.Type,
                          receiveOn queue: DispatchQueue,
                          _ finished: @escaping (HTTPResult<Response, Error>) -> Void) where Response: Codable
@@ -27,7 +27,7 @@ class HTTPManager: HTTPService {
         self.decoder = decoder
     }
     
-    func fetch<Response>(endpoint: HTTPEndpointable,
+    func fetch<Response>(endpoint: HTTPEndpoint,
                          type: Response.Type,
                          receiveOn queue: DispatchQueue,
                          _ finished: @escaping (HTTPResult<Response, Error>) -> Void) where Response : Decodable, Response : Encodable {
@@ -64,7 +64,7 @@ class HTTPManager: HTTPService {
 }
 private extension HTTPManager {
     func validate(httpResponse: HTTPURLResponse) throws {
-        guard 200...201 ~= httpResponse.statusCode else {
+        guard 200...299 ~= httpResponse.statusCode else {
             throw Errors.invalidHTTPResponseStatusCode(httpResponse.statusCode)
         }
     }
