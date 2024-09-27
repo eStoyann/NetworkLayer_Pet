@@ -8,15 +8,15 @@
 
 import Foundation
 
-protocol HTTPEndpoint {
+public protocol HTTPEndpoint {
     func request() throws -> URLRequest
 }
-struct Endpoint: HTTPEndpoint {
-    let builder: HTTPURLBuilder
-    let httpMethod: HTTPMethod
-    let httpHeaders: [HTTPHeader]
-    let timeoutInterval: TimeInterval
-    let cachePolicy: URLRequest.CachePolicy
+public struct Endpoint: HTTPEndpoint {
+    public let builder: HTTPURLBuilder
+    public let httpMethod: HTTPMethod
+    public let httpHeaders: [HTTPHeader]
+    public let timeoutInterval: TimeInterval
+    public let cachePolicy: URLRequest.CachePolicy
     
     init(urlBuilder: HTTPURLBuilder,
          httpMethod: HTTPMethod = .get,
@@ -30,7 +30,7 @@ struct Endpoint: HTTPEndpoint {
         self.cachePolicy = cachePolicy
     }
     
-    func request() throws -> URLRequest {
+    public func request() throws -> URLRequest {
         guard let url = builder.url else {
             throw URLError(.badURL)
         }

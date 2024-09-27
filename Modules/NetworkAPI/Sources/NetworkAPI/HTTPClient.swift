@@ -8,15 +8,15 @@
 
 import Foundation
 
-protocol HTTPClient {
-    typealias CompletionHandler = (Result<(Data, HTTPURLResponse), Error>) -> Void
+public protocol HTTPClient: Sendable {
+    typealias CompletionHandler = @Sendable (Result<(Data, HTTPURLResponse), Error>) -> Void
     func fetch(request: URLRequest,
                _ finished: @escaping CompletionHandler) -> HTTPURLSessionTask
 }
 //common usage
 //just run request and get response data
 extension URLSession: HTTPClient {
-    func fetch(request: URLRequest,
+    public func fetch(request: URLRequest,
                _ finished: @escaping CompletionHandler) -> HTTPURLSessionTask {
         dataTask(with: request) { data, response, error in
             guard error == nil else {

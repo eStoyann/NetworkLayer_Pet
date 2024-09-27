@@ -7,18 +7,18 @@
 
 import Foundation
 
-protocol HTTPBody {
+public protocol HTTPBody {
     func create() throws -> Data
 }
 
-struct DefaultHTTPBody: HTTPBody {
+public struct DefaultHTTPBody: HTTPBody {
     let parameters: [String: Any]
 
     init(parameters: [String : Any]) {
         self.parameters = parameters
     }
     
-    func create() throws -> Data {
+    public func create() throws -> Data {
         try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
     }
 }

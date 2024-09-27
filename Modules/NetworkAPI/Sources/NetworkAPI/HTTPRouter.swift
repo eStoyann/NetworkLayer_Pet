@@ -8,10 +8,10 @@
 
 import Foundation
 
-enum HTTPRouter {
+public enum HTTPRouter {
     case posts
     
-    var endpoint: HTTPEndpoint {
+    public var endpoint: HTTPEndpoint {
         switch self {
         case .posts:
             let path = "/posts"

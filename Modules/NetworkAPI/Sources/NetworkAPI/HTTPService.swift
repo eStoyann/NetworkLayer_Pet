@@ -8,29 +8,29 @@
 
 import Foundation
 
-protocol HTTPService {
+public protocol HTTPService: Sendable {
     func fetch<Response>(endpoint: HTTPEndpoint,
                          type: Response.Type,
                          receiveOn queue: DispatchQueue,
-                         _ finished: @escaping (HTTPResult<Response>) -> Void) where Response: Codable
+                         _ finished: @escaping @Sendable (HTTPResult<Response>) -> Void) where Response: Codable
 }
-class HTTPManager: HTTPService {
-    enum Errors: Error {
-        case invalidHTTPResponseStatusCode(Int)
+public final class HTTPManager: HTTPService {
+    public enum Errors: Error {
+        case invalidHTTPResponse(statusCode: Int)
     }
     private let client: HTTPClient
     private let decoder: JSONDecoder
     
-    init(client: HTTPClient = URLSession.shared,
+    public init(client: HTTPClient = URLSession.shared,
          decoder: JSONDecoder = JSONDecoder()) {
         self.client = client
         self.decoder = decoder
     }
     
-    func fetch<Response>(endpoint: HTTPEndpoint,
+    public func fetch<Response>(endpoint: HTTPEndpoint,
                          type: Response.Type,
                          receiveOn queue: DispatchQueue,
-                         _ finished: @escaping (HTTPResult<Response>) -> Void) where Response : Decodable, Response : Encodable {
+                         _ finished: @escaping @Sendable (HTTPResult<Response>) -> Void) where Response : Decodable, Response : Encodable, Response: Sendable {
         do {
             let request = try endpoint.request()
             let task = client.fetch(request: request) {[weak self] result in
@@ -65,7 +65,7 @@ class HTTPManager: HTTPService {
 private extension HTTPManager {
     func validate(httpResponse: HTTPURLResponse) throws {
         guard 200...299 ~= httpResponse.statusCode else {
-            throw Errors.invalidHTTPResponseStatusCode(httpResponse.statusCode)
+            throw Errors.invalidHTTPResponse(statusCode: httpResponse.statusCode)
         }
     }
 }

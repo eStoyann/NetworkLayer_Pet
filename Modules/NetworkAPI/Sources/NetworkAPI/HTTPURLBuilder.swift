@@ -8,15 +8,15 @@
 
 import Foundation
 
-protocol HTTPURLBuilder {
+public protocol HTTPURLBuilder {
     var url: URL?{get}
 }
 
-struct URLBuilder: HTTPURLBuilder {
+public struct URLBuilder: HTTPURLBuilder {
     typealias QueryParameters = [String: String]
     private var components: URLComponents
     
-    var url: URL? {
+    public var url: URL? {
         components.url
     }
     init(scheme: HTTPScheme = .https,

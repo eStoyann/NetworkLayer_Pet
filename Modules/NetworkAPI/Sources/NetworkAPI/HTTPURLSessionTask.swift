@@ -8,16 +8,16 @@
 
 import Foundation
 
-protocol HTTPURLSessionTask {
+public protocol HTTPURLSessionTask {
     func stop()
     func start()
 }
 
 extension URLSessionTask: HTTPURLSessionTask {
-    func stop() {
+    public func stop() {
         cancel()
     }
-    func start() {
+    public func start() {
         resume()
     }
 }

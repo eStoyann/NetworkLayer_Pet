@@ -8,10 +8,10 @@
 
 import Foundation
 
-enum HTTPHeader: String {
+public enum HTTPHeader: String {
     case contentType = "Content-Type"
     
-    var value: String {
+    public var value: String {
         switch self {
         case .contentType:
             return "application/json"

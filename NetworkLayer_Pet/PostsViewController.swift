@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NetworkAPI
 
 class PostsViewController: UIViewController {
     private struct Constants {
@@ -53,9 +54,7 @@ class PostsViewController: UIViewController {
     }
     private func loadPosts() {
         let endpoint = HTTPRouter.posts.endpoint
-        service.fetch(endpoint: endpoint,
-                      type: Posts.self,
-                      receiveOn: .main) {[weak self] result in
+        service.fetch(endpoint: endpoint, type: Posts.self, receiveOn: .main) {[weak self] result in
             guard let self else {return}
             switch result {
             case let .success(posts):

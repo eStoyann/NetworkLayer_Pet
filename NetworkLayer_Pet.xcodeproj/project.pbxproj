@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CF33517E2CA705BD00D46175 /* NetworkAPI in Frameworks */ = {isa = PBXBuildFile; productRef = CF33517D2CA705BD00D46175 /* NetworkAPI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CF8FD4062C9DE04700F36A59 /* NetworkLayer_Pet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkLayer_Pet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF33517E2CA705BD00D46175 /* NetworkAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = NetworkLayer_Pet;
 			packageProductDependencies = (
+				CF33517D2CA705BD00D46175 /* NetworkAPI */,
 			);
 			productName = NetworkLayer_Pet;
 			productReference = CF8FD4062C9DE04700F36A59 /* NetworkLayer_Pet.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = CF8FD3FD2C9DE04700F36A59;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CF33517C2CA705BD00D46175 /* XCLocalSwiftPackageReference "Modules/NetworkAPI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CF8FD4072C9DE04700F36A59 /* Products */;
 			projectDirPath = "";
@@ -160,9 +169,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "devsto.team.com.NetworkLayer-Pet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -188,9 +201,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "devsto.team.com.NetworkLayer-Pet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -335,6 +352,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		CF33517C2CA705BD00D46175 /* XCLocalSwiftPackageReference "Modules/NetworkAPI" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Modules/NetworkAPI;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CF33517D2CA705BD00D46175 /* NetworkAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NetworkAPI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CF8FD3FE2C9DE04700F36A59 /* Project object */;
 }

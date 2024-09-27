@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum HTTPMethod {
+public enum HTTPMethod {
     case get
     case post(HTTPBody)
     case delete
@@ -29,7 +29,7 @@ enum HTTPMethod {
             return "PUT"
         }
     }
-    var httpBody: HTTPBody? {
+    public var httpBody: HTTPBody? {
         if case let .post(data) = self {
             return data
         }

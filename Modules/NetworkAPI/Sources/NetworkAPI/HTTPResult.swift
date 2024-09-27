@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum HTTPResult<Success> {
+public enum HTTPResult<Success> {
     case success(Success)
     case failure(Error)
     case cancelled

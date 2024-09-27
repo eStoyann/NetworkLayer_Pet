@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NetworkAPI
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
